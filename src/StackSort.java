@@ -87,8 +87,9 @@ public class StackSort {
     	
     	// Push from to data to lowerValues and upperValues
     	int move = 0;
+    	System.out.println("Length: " + data.length);
     	for (int i = 0; i < data.length; i ++) {
-    		System.out.println(i+": ");
+    		System.out.println(i+": Adding ["+data[i]+"]");
     		int add = data[i];
     		boolean inserted = false;
     		
@@ -140,7 +141,12 @@ public class StackSort {
     			
     		} else { // |L| A |R|
     			if (add <= upperValues.peek()) {
-    				if (add > lowerValues.peek()) { // |L| <= A ... |L|<--A
+    				if (add == upperValues.peek()) {
+    					upperValues.push(add);
+    				} else if (add == lowerValues.peek()) {
+    					lowerValues.push(add);
+    				} else if (add > lowerValues.peek()) { // |L| <= A ... |L|<--A
+    					System.out.println("GET HERE");
         				upperValues.push(add);
         			} else if (add < lowerValues.peek()) { // |L| > A ... |L|-->|~| ... A-->|U|
         				while (add < lowerValues.peek()) {
@@ -174,27 +180,23 @@ public class StackSort {
     			}
     		}
     		
-    	/*	if (!upperValues.isEmpty()) {
-    			System.out.println("  Upper: "+upperValues.peek());
-    		} else {
-    			System.out.println("  Upper: EMPTY");
-    		}
-    		if (!lowerValues.isEmpty()) {
-    			System.out.println("  Lower: "+lowerValues.peek());
-    		} else {
-    			System.out.println("  Lower: EMPTY");
-    		}*/
     		System.out.println(" Lower: " + lowerValues.toString());
     		System.out.println(" Upper: " + upperValues.toString());
     		
     		//upperValues.push(data[i]);
     	}
     	
+    	// Move all to upperValues
     	while (!lowerValues.isEmpty()) {
     		move = lowerValues.pop();
     		upperValues.push(move);
     	}
     	
+    	System.out.println("Original array is: " + representationOfArray(data));
+    	System.out.println("       Upper: " + upperValues.toString());
+    	
+    	
+    	System.out.println("Data Length:  "+ data.length);
     	
     	
     	// upperValues to result - should be sorted
