@@ -87,9 +87,9 @@ public class StackSort {
     	
     	// Push from to data to lowerValues and upperValues
     	int move = 0;
-    	System.out.println("Length: " + data.length);
+    	//System.out.println("Length: " + data.length);
     	for (int i = 0; i < data.length; i ++) {
-    		System.out.println(i+": Adding ["+data[i]+"]");
+    		//System.out.println(i+": Adding ["+data[i]+"]");
     		int add = data[i];
     		boolean inserted = false;
     		
@@ -146,7 +146,6 @@ public class StackSort {
     				} else if (add == lowerValues.peek()) {
     					lowerValues.push(add);
     				} else if (add > lowerValues.peek()) { // |L| <= A ... |L|<--A
-    					System.out.println("GET HERE");
         				upperValues.push(add);
         			} else if (add < lowerValues.peek()) { // |L| > A ... |L|-->|~| ... A-->|U|
         				while (add < lowerValues.peek()) {
@@ -180,8 +179,8 @@ public class StackSort {
     			}
     		}
     		
-    		System.out.println(" Lower: " + lowerValues.toString());
-    		System.out.println(" Upper: " + upperValues.toString());
+    		//System.out.println(" Lower: " + lowerValues.toString());
+    		//System.out.println(" Upper: " + upperValues.toString());
     		
     		//upperValues.push(data[i]);
     	}
@@ -192,11 +191,11 @@ public class StackSort {
     		upperValues.push(move);
     	}
     	
-    	System.out.println("Original array is: " + representationOfArray(data));
-    	System.out.println("       Upper: " + upperValues.toString());
+    	//System.out.println("Original array is: " + representationOfArray(data));
+    	//System.out.println("       Upper: " + upperValues.toString());
     	
     	
-    	System.out.println("Data Length:  "+ data.length);
+    	//System.out.println("Data Length:  "+ data.length);
     	
     	
     	// upperValues to result - should be sorted
